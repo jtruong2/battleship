@@ -10,7 +10,7 @@ class Player
   def initialize
     @ship1_coordinates = []
     @ship2_coordinates = []
-    @fire = nil
+    @fire = []
     @times_fired = 0
   end
 
@@ -43,9 +43,15 @@ class Player
   end
 
   def fire_missile
-    input_1 = get_action
-    @fire = input_1
-    @times_fired += 1 #don't forget to decrement if invalid selection
+    puts 'Enter coordinates to fire'
+    input = get_action
+    if @fire.include?(input)
+      puts "You've already fired at that coordinate, shoot again"
+      self.fire_missile
+    else
+      @fire << input
+      @times_fired += 1 
+    end
     return @fire
   end
 
