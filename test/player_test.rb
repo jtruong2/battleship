@@ -30,22 +30,22 @@ class PlayerTest < Minitest::Test
     assert_equal 3, player.times_fired
   end
 
-  def test_reset_ship1_coordinates_if_not_valid_selection
-    player = Player.new
-    puts "Enter coordinates B1 and B2 to test reset ship 1"
-    player.assign_ship1_coordinates
-    player.ship1_coordinates
-    player.reset_ship1_coordinates
-    assert_equal [], player.ship1_coordinates
-  end
-
-  def test_reset_ship2_coordinates_if_not_valid_selection
-    player = Player.new
-    puts "Enter coordinates A1 and C1 to test reset ship 2"
-    player.assign_ship2_coordinates
-    player.ship2_coordinates
-    player.reset_ship2_coordinates
-    assert_equal [], player.ship2_coordinates
-  end
+  # def test_reset_ship1_coordinates_if_not_valid_selection
+  #   player = Player.new
+  #   puts "Enter coordinates B1 and B2 to test reset ship 1"
+  #   player.assign_ship1_coordinates
+  #   player.ship1_coordinates
+  #   player.reset_ship1_coordinates
+  #   assert_equal [], player.ship1_coordinates
+  # end
+  #
+  # def test_reset_ship2_coordinates_if_not_valid_selection
+  #   player = Player.new
+  #   puts "Enter coordinates A1 and C1 to test reset ship 2"
+  #   player.assign_ship2_coordinates
+  #   player.ship2_coordinates
+  #   player.reset_ship2_coordinates
+  #   assert_equal [], player.ship2_coordinates
+  # end
 
 end

@@ -62,10 +62,15 @@ class Computer
      "D4"=>["D2", "B4"]}
 
      random_first_coord = @first_coord.sample
-     ship2_coordinates << random_first_coord
-
      random_second_coord = second_coord_ship_2[random_first_coord].sample
-     ship2_coordinates << random_second_coord
+     if ship1_coordinates.include?(random_first_coord)
+       generate_coordinates_for_ship2
+     elsif ship1_coordinates.include?(random_second_coord)
+       generate_coordinates_for_ship2
+     else
+       ship2_coordinates << random_first_coord
+       ship2_coordinates << random_second_coord
+     end
   end
 
   def fire_missile
