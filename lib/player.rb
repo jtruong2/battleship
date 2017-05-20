@@ -21,15 +21,15 @@ class Player
   def assign_ship1_coordinates
     input_1 = get_action
     input_2 = get_action
-    @ship1_coordinates << input_1
-    @ship1_coordinates << input_2
+    ship1_coordinates << input_1
+    ship1_coordinates << input_2
   end
 
   def assign_ship2_coordinates
     input_1 = get_action
     input_2 = get_action
-    @ship2_coordinates << input_1
-    @ship2_coordinates << input_2
+    ship2_coordinates << input_1
+    ship2_coordinates << input_2
   end
 
   def fire_missile

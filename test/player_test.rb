@@ -4,28 +4,24 @@ require './lib/player'
 
 class PlayerTest < Minitest::Test
   def test_can_take_user_input_for_ship1_coordinates
-    skip
     player = Player.new
     puts "Enter coordinates B1 and B2 to test 2 unit ship"
     assert_equal ['B1','B2'], player.assign_ship1_coordinates
   end
 
   def test_can_take_user_input_for_ship2_coordinates
-    skip
     player = Player.new
     puts "Enter coordinates A1 and C1 to test 3 unit ship"
     assert_equal ['A1', 'C1'], player.assign_ship2_coordinates
   end
 
   def test_can_take_user_input_coordinates_to_fire
-    skip
     player = Player.new
     puts "Enter coordinates D4 to test fire missle"
     assert_equal "D4", player.fire_missile
   end
 
   def test_count_how_many_times_fired_missle
-    skip
     player = Player.new
     puts "Enter coordinates 3 times to test count"
     player.fire_missile
