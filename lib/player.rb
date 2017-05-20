@@ -38,4 +38,12 @@ class Player
     @times_fired += 1 #don't forget to decrement if invalid selection
     return @fire
   end
+
+  def reset_ship1_coordinates
+    @ship1_coordinates = @ship1_coordinates.clear
+  end
+
+  def reset_ship2_coordinates
+    @ship2_coordinates = @ship2_coordinates.clear
+  end
 end
