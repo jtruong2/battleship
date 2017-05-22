@@ -14,10 +14,10 @@ class Shoot
   end
 
   def player_fire
-    player_fire = player.fire
+    player_fire = player.fire_missile
   end
 
   def computer_fire
-    computer_fire = computer.fire
+    computer_fire = computer.fire_missile
   end
 end

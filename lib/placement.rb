@@ -1,5 +1,6 @@
 require_relative 'player'
 require_relative 'computer'
+
 require 'pry'
 
 class Placement
@@ -24,8 +25,6 @@ class Placement
     @computer.generate_coordinates_for_ship2
     @player.assign_ship1_coordinates
     @player.assign_ship2_coordinates
-
-
   end
 
 

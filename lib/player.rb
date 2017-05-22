@@ -4,12 +4,14 @@ class Player
   attr_reader   :fire,
                 :times_fired,
                 :ship1_coordinates,
-                :ship2_coordinates
+                :ship2_coordinates,
+                :current_shot
 
   def initialize
     @ship1_coordinates = []
     @ship2_coordinates = []
     @fire = []
+    @current_shot = nil
     @times_fired = 0
   end
 
@@ -51,6 +53,6 @@ class Player
       @fire << input
       @times_fired += 1
     end
-    return @fire
+    @current_shot = input
   end
 end

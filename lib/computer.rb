@@ -3,12 +3,14 @@ require 'pry'
 class Computer
   attr_reader :ship1_coordinates,
               :ship2_coordinates,
-              :fire
+              :fire,
+              :current_shot
 
   def initialize
     @ship1_coordinates = []
     @ship2_coordinates = []
-    @fire = nil
+    @fire = []
+    @current_shot = nil
     @first_coord =
     ['A1','A2','A3','A4',
     'B1','B2','B3','B4',
@@ -74,7 +76,13 @@ class Computer
   end
 
   def fire_missile
-    @fire = @first_coord.sample
+    fire_shot = @first_coord.sample
+    if @fire.include?(fire_shot)
+      self.fire_missile
+    else
+      @fire << fire_shot
+    end
+    @current_shot = fire_shot
   end
 
 end
