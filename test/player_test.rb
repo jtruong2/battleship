@@ -18,7 +18,7 @@ class PlayerTest < Minitest::Test
   def test_can_take_user_input_coordinates_to_fire
     player = Player.new
     puts "Enter coordinates D4 to test fire missle"
-    assert_equal "D4", player.fire_missile
+    assert_equal ["D4"], player.fire_missile
   end
 
   def test_count_how_many_times_fired_missle

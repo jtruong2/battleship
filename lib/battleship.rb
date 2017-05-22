@@ -1,20 +1,42 @@
 require 'pry'
-puts 'Welcome to BATTLESHIP'
-puts 'Would you like to (p)lay, read the (i)nstructions, or (q)uit'
-user_input = gets.chomp.downcase
+require_relative 'placement'
 
-instructions = File.read("/Users/jimmytruong/turing/1module/projects/battleship/instructions/instructions.md")
+class Battleship
+  attr_reader :start_game,
+              :placement
 
-if user_input == 'p'
-  #continue to ship layout
-elsif user_input == 'i'
-  puts instructions
-elsif user_input == 'q'
-  #exit program
-else
-  puts "Invalid response!"
+  def initialize
+    @placement = Placement.new
+  end
+
+
+  def intro
+    puts 'Welcome to BATTLESHIP'
+    puts 'Would you like to (p)lay, read the (i)nstructions, or (q)uit'
+    response = gets.chomp.downcase
+    if response == 'p'
+      self.start_game
+    elsif response == 'i'
+      instructions = File.read("/Users/jimmytruong/turing/1module/projects/battleship/instructions/instructions.md")
+      puts instructions
+    elsif response == 'q'
+      puts 'Goodbye!'
+    else
+      puts "Invalid response!"
+    end
+  end
+
+  def start_game
+    @placement.retrieve_all_ship_coordinates
+
+
+  end
+
+
+
 end
 
-class BattleShip
 
-end
+
+battleship = Battleship.new
+battleship

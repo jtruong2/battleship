@@ -2,9 +2,8 @@ require 'pry'
 
 class Player
   attr_reader   :fire,
-                :times_fired
-
-  attr_accessor :ship1_coordinates,
+                :times_fired,
+                :ship1_coordinates,
                 :ship2_coordinates
 
   def initialize
@@ -15,7 +14,7 @@ class Player
   end
 
   def get_action
-    gets.chomp
+    gets.chomp.upcase
   end
 
   def assign_ship1_coordinates
@@ -50,16 +49,8 @@ class Player
       self.fire_missile
     else
       @fire << input
-      @times_fired += 1 
+      @times_fired += 1
     end
     return @fire
   end
-
-  # def reset_ship1_coordinates
-  #   @ship1_coordinates = @ship1_coordinates.clear
-  # end
-  #
-  # def reset_ship2_coordinates
-  #   @ship2_coordinates = @ship2_coordinates.clear
-  # end
 end
