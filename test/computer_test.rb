@@ -18,6 +18,6 @@ class ComputerTest < Minitest::Test
   def test_generate_random_coordinates_to_fire
     computer = Computer.new
     position = computer.fire_missile
-    assert_equal position, computer.fire
+    assert_equal position, computer.current_shot
   end
 end

@@ -12,7 +12,6 @@ class Player
     @ship2_coordinates = []
     @fire = []
     @current_shot = nil
-    @times_fired = 0
   end
 
   def get_action
@@ -51,7 +50,6 @@ class Player
       self.fire_missile
     else
       @fire << input
-      @times_fired += 1
     end
     @current_shot = input
   end

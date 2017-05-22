@@ -46,35 +46,35 @@ class Computer
 
   def generate_coordinates_for_ship2
     second_coord_ship_2 =
-    {"A1"=>["A3", "C1"],
-     "A2"=>["C2", "A4"],
-     "A3"=>["A1", "C3"],
-     "A4"=>["A2", "C4"],
-     "B1"=>["A3", "D1"],
-     "B2"=>["D2", "A4"],
-     "B3"=>["B1", "D3"],
-     "B4"=>["B2", "D4"],
-     "C1"=>["A1", "C3"],
-     "C2"=>["A2", "C4"],
-     "C3"=>["C1", "A3"],
-     "C4"=>["C2", "A4"],
-     "D1"=>["B1", "D3"],
-     "D2"=>["B2", "D4"],
-     "D3"=>["B3", "D1"],
-     "D4"=>["D2", "B4"]}
+    {"A1"=>{"A3"=>"A2","C1"=>"B1"},
+     "A2"=>{"C2"=>"B2", "A4"=>"A3"},
+     "A3"=>{"A1"=>"A2", "C3"=>"B3"},
+     "A4"=>{"A2"=>"A3", "C4"=>"B4"},
+     "B1"=>{"B3"=>"B2", "D1"=>"C1"},
+     "B2"=>{"D2"=>"C2", "B4"=>"B3"},
+     "B3"=>{"B1"=>"B2", "D3"=>"C3"},
+     "B4"=>{"B2"=>"B3", "D4"=>"C4"},
+     "C1"=>{"A1"=>"B1", "C3"=>"C2"},
+     "C2"=>{"A2"=>"B2", "C4"=>"C3"},
+     "C3"=>{"C1"=>"C2", "A3"=>"B3"},
+     "C4"=>{"C2"=>"C3", "A4"=>"B4"},
+     "D1"=>{"B1"=>"C1", "D3"=>"D2"},
+     "D2"=>{"B2"=>"C2", "D4"=>"D3"},
+     "D3"=>{"B3"=>"C3", "D1"=>"D2"},
+     "D4"=>{"D2"=>"D3", "B4"=>"C4"}}
 
      random_first_coord = @first_coord.sample
-     random_second_coord = second_coord_ship_2[random_first_coord].sample
+     random_second_coord = second_coord_ship_2[random_first_coord].to_a.sample
      if ship1_coordinates.include?(random_first_coord)
        generate_coordinates_for_ship2
-     elsif ship1_coordinates.include?(random_second_coord)
+     elsif ship1_coordinates.include?(random_second_coord[0]) || ship1_coordinates.include?(random_second_coord[1])
        generate_coordinates_for_ship2
      else
        ship2_coordinates << random_first_coord
        ship2_coordinates << random_second_coord
+       @ship2_coordinates = ship2_coordinates.flatten
      end
   end
-
   def fire_missile
     fire_shot = @first_coord.sample
     if @fire.include?(fire_shot)
