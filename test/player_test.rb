@@ -9,7 +9,7 @@ class PlayerTest < Minitest::Test
     player.find_ship1_coordinate1
     player.find_ship1_coordinate2
 
-    assert_equal ['B1', 'B2'], player.ship1_coordinates
+    assert_equal ['B1', 'B2'], player.ship1
   end
 
   def test_can_take_user_input_for_ship2_coordinates
@@ -18,7 +18,7 @@ class PlayerTest < Minitest::Test
     player.find_ship2_coordinate1
     player.find_ship2_coordinate2
 
-    assert_equal ['A1', 'C1'], player.ship2_coordinates
+    assert_equal ['A1', 'C1'], player.ship2
   end
 
   def test_can_take_user_input_coordinates_to_fire
