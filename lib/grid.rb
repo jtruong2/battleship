@@ -29,7 +29,7 @@ class Grid
   end
 
   def player_grid(coordinate, h_or_m)
-    self.rows_player.each do |sub_array|
+    rows_player.each do |sub_array|
       sub_array.map! do |pos|
         if pos == coordinate
           pos = h_or_m
@@ -38,11 +38,11 @@ class Grid
         end
       end
     end
-    puts self.player_table
+    puts player_table
   end
 
   def computer_grid(coordinate, h_or_m)
-    self.rows_computer.each do |sub_array|
+    rows_computer.each do |sub_array|
       sub_array.map! do |pos|
         if pos == coordinate
           pos = h_or_m

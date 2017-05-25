@@ -1,56 +1,85 @@
 require 'pry'
-
+require_relative 'rules'
 class Player
-  attr_reader   :fire,
-                :times_fired,
-                :ship1_coordinates,
-                :ship2_coordinates,
+  include Rules
+  attr_reader   :ship1,
+                :ship2,
+                :fire,
                 :current_shot
 
   def initialize
-    @ship1_coordinates = []
-    @ship2_coordinates = []
+    @ship1 = []
+    @ship2 = []
     @fire = []
     @current_shot = nil
   end
 
-  def get_action
-    gets.chomp.upcase
-  end
 
-  def assign_ship1_coordinates
-    puts 'Place your 1st ship(2 units) one coordinate at a time'
-    input_1 = get_action
-    input_2 = get_action
-    ship1_coordinates << input_1
-    ship1_coordinates << input_2
-  end
-
-  def assign_ship2_coordinates
-    puts 'Place your 2nd ship(3 units) one coordinate at a time'
-    input_1 = get_action
-    input_2 = get_action
-    if @ship1_coordinates.include?(input_1)
-      puts 'Your ships are overlapping, enter new coordinates for ship 2 one coordinate at a time'
-      assign_ship2_coordinates
-    elsif @ship1_coordinates.include?(input_2)
-      puts 'Your ships are overlapping, enter new coordinates for ship 2 one coordinate at a time'
-      assign_ship2_coordinates
+  def find_ship1_coordinate1
+    puts 'Place your 1st coordinate for your Destroyer'
+    input = get_action
+    if !selection_limitations.include?(input)
+      invalid_ship_response
+      find_ship1_coordinate1
     else
-      ship2_coordinates << input_1
-      ship2_coordinates << input_2
+      ship1 << input
+    end
+  end
+
+  def find_ship1_coordinate2
+    puts 'Place your 2nd coordinate for your Destroyer'
+    input = get_action
+    if !selection_limitations.include?(input) || !second_coord_ship_1[ship1[0]].include?(input) || ship1.include?(input)
+      invalid_ship_response
+      find_ship1_coordinate2
+    else
+      ship1 << input
+    end
+  end
+
+
+  def find_ship2_coordinate1
+    puts 'Place your 1st coordinate for your Cruiser'
+    input = get_action
+    if !selection_limitations.include?(input) || ship1.include?(input)
+      invalid_ship_response
+      find_ship2_coordinate1
+    else
+      ship2 << input
+    end
+  end
+
+  def find_ship2_coordinate2
+    puts 'Place your 2nd coordinate for your Cruiser'
+    input = get_action
+    if ship2.include?(input) || !second_coord_ship_2[ship2[0]].include?(input) || ship1.include?(input)
+      invalid_ship_response
+      find_ship2_coordinate2
+    else
+      ship2 << input
     end
   end
 
   def fire_missile
     puts 'Enter coordinates to fire'
     input = get_action
-    if @fire.include?(input)
-      puts "You've already fired at that coordinate, shoot again"
-      self.fire_missile
+    if !selection_limitations.include?(input) || fire.include?(input)
+      invalid_fire_response; fire_missile
     else
       @fire << input
+      @current_shot = input
     end
-    @current_shot = input
+  end
+
+  def invalid_ship_response
+    puts "Your ship coordinate is invalid, try again!"
+  end
+
+  def invalid_fire_response
+    puts "Invalid shot, fire again"
+  end
+
+  def get_action
+    gets.chomp.upcase
   end
 end
